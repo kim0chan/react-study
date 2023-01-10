@@ -26,8 +26,8 @@ class App extends Component {
         <Subject
           title={this.state.subject.title}
           content={this.state.subject.sub}></Subject>
-        <TOC data={this.state.content}></TOC>
-        <Subject title="REACT" content="react!"></Subject>
+        <TOC data={this.state.contents}></TOC>
+        <Content title="HTML" desc="HTML is MyperText Markup Language."></Content>
       </div>
     );
   }
