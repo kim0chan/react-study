@@ -13,7 +13,7 @@ class App extends Component {
     this.max_content_id = 3;
     this.state = {
       mode: 'read',
-      selected_content_id: 2,
+      selected_content_id: 3,
       subject: { title: 'WEB', sub: 'World Wide Web!' },
       welcome: { title: 'Welcome', desc: 'Hello, React!!' },
       contents: [
@@ -59,11 +59,13 @@ class App extends Component {
         });
         console.log(_title, _desc);
       }.bind(this)}></CreateContent>
+
     } else if (this.state.mode === 'update') {
+      _content = this.getReadContent();
       _article = <UpdateContent data={_content} onSubmit={
         function (_id, _title, _desc) {
           var _contents = Array.from(this.state.contents);
-          var  i = 0;
+          var i = 0;
           while(i < _contents.length) {
             if(_contents[i].id === _id) {
               _contents[i] = {id:_id, title:_title, desc:_desc};
