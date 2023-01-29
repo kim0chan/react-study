@@ -1,70 +1,30 @@
-# Getting Started with Create React App
+## **state를 후킹하기, 이펙트를 후킹하기**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+함수 방식의 컴포넌트를 만들 때는 반환값만 만들면 바로 컴포넌트의 실제 모양이 된다.  
+클래스로 컴포넌트를 만들 때는 `render`라는 이름의 메서드를 정의해서 그것의 반환값이 UI가 된다.  
 
-## Available Scripts
+state 값이 바뀌면 클래스 컴포넌트의 `render` 메서드가 호출되면서 바뀐 결과가 반영된다.  
+함수형 컴포넌트에선 state 설정, 초기화, 값을 사용하고 변경하는 작업을 할 수 없었다.  
 
-In the project directory, you can run:
+# 훅(Hook)
+리액트 16.8 버전부터 훅이라는 기능이 도입되었다.  
+리액트 기본 내장 훅이 있고, 사용자 정의 훅을 만들어서 사용할 수도 있다. [공식 문서](https://ko.reactjs.org/docs/hooks-intro.html)  
+리액트에서 제공하는 훅의 이름은 `useState`이다. `useState`는 배열을 반환한다.  
+배열의 첫 번째 원소는 **전달된 state 값**이고, 두 번째 원소는 **상태를 바꾸는 함수**이다.
+```javascript
+var numberState = useState(props.initNumber);
+var number = numberState[0];
+var setNumber = numberState[1];
 
-### `npm start`
+setNumber(Math.random());
+```
+다음과 같이 사용했다. 혹은 간단하게  
+```js
+var [number, setNumber] = useState(props.initNumber);
+```
+이렇게 쓰는 것이 더 선호된다.  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+## 라이프사이클 구현
+이제 함수 방식에서도 state를 사용할 수 있게 되었다.  
+다음은 함수 방식에서 라이프사이클을 다루는 법을 알아보자.  
