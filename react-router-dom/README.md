@@ -17,11 +17,11 @@ ReactDOM.render(<BrowserRouter><App/></BrowserRouter>, document.getElementById('
 ```
 이렇게 감싸주면 된다.  
 `Home`, `Topics`, `Contact` 컴포넌트를 URL에 따라 달라지게 하기 위하여 하이퍼링크와 `href`를 추가하고 각 컴포넌트를 `Route`로 감싼다.
-> #### 2023-01-29) 왜 `Route`를 쓰면 페이지가 렌더링이 안되는지 모르겠다.
-> #### ['꾸개일'님의 블로그](https://dev-h2.tistory.com/40)
-> ##### 버전의 문제였다.  
-> ##### `package.json`에서 react-router-dom의 6버전이 설치되어 있음을 알 수 있었다. 따라서 다음과 같이 downgrading 했다.
-> ##### ` $ npm install react-router-dom@5.3.0`
+> 2023-01-29) 왜 `Route`를 쓰면 페이지가 렌더링이 안되는지 모르겠다.  
+['꾸개일'님의 블로그](https://dev-h2.tistory.com/40)  
+버전이 문제였다.  
+`package.json`에서 react-router-dom의 6버전이 설치되어 있음을 알 수 있었다. 따라서 다음과 같이 downgrading 했다.  
+` $ npm install react-router-dom@5.3.0`
 
 `Home` 컴포넌트는 `"/"`, `Topics` 컴포넌트는 `"/topics"`, `Contact` 컴포넌트는 `"/contact"`에 라우팅이 되었는데, 문제점이 있다.  
 `"/topics"`에서 `Home`과 `Topics`가 같이 렌더링되고, `"/contact"`에서 `Home`과 `Contact`가 같이 렌더링이 된다.  

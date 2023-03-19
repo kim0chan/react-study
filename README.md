@@ -15,10 +15,11 @@ $ npm install -g create-react-app
 ```
 npm create-react-app [path]
 ```
-입력하여 React 개발 환경을 조성할 수 있다.  
+입력하여 React 개발 환경을 구성할 수 있다.  
 공식 문서에서는 `npm` 대신 `npx`를 사용하는 것을 권한다.  
 `path`는 GUI에서 drag & drop 해주면 편하다.  
 원하는 디렉토리까지 `cd`해서 `.` 입력해줘도 된다.  
+[GitHub Repository](https://github.com/facebook/create-react-app)
 ```
 npm run start
 ```
