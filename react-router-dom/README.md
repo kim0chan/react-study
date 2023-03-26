@@ -30,7 +30,7 @@ ReactDOM.render(<BrowserRouter><App/></BrowserRouter>, document.getElementById('
 ## [라우팅 문서](https://v5.reactrouter.com/web/api/Route)
 ### Switch 컴포넌트
 `Switch` 컴포넌트를 쓰면 `exact`라는 속성을 사용하지 않고 같은 효과를 낼 수 있다.  
-우선 `Switch` 컴포넌트를 import하여 `Route` 컴포넌트를 감싸보자.
+우선 <u>`Switch` 컴포넌트를 import</u>하여 `Route` 컴포넌트를 감싸보자.
 ```js
 <Switch>
     <Route path="/"><Home></Home></Route>
@@ -51,3 +51,41 @@ ReactDOM.render(<BrowserRouter><App/></BrowserRouter>, document.getElementById('
 </Switch>
 ```
 이렇게 하면 된다.
+
+## Link
+`Link` 컴포넌트는 페이지가 re-load되지 않게 자동으로 구현하는 컴포넌트이다.  
+지금은 app의 상단 링크를 클릭할 때마다 페이지가 새로 로딩되는데, `<a>` 태그를 `<Link>` 컴포넌트로 변경해보자. `href` 속성 대신 `to` 속성을 사용해야 한다는 것을 주의하자.  
+
+`<a>` 대신 `<Link>`를 사용하면 페이지의 `state` 값을 잃고 속도가 저하된다.
+
+### `BrouserRouter`와 `HashRouter`의 차이점
+* `BrowserRouter`
+    * HTML5의 history API를 활용해서 UI를 업데이트
+    * 동적 페이지에 적합
+* `HashRouter`
+    * 주소에 `#`이 붙는다.
+    * 정적 페이지에 적합
+
+## NavLink
+`NavLink`는 `Link`와 유사하지만 기능이 조금 더 부가되어 있다.  
+`Link`와는 달리 `class="active"`라는 속성이 생기고 이를 통해 사용자가 현재 어떤 페이지에 위치하고 있는지 직관적으로 알 수 있도록 한다.
+
+## Nested Routing
+
+___
+## 문서
+[**Server Rendering**](https://v5.reactrouter.com/web/guides/server-rendering)  
+서버 사이드 렌더링에 관해서  
+[**Code Splitting**](https://v5.reactrouter.com/web/guides/code-splitting)  
+코드를 적당히 쪼개서 필요할 때마다 경제적으로 로드하게 하는 것  
+**APIs**
+* https://v5.reactrouter.com/web/api/Hooks
+* https://v5.reactrouter.com/web/api/BrowserRouter
+* https://v5.reactrouter.com/web/api/HashRouter
+* https://v5.reactrouter.com/web/api/Link
+* https://v5.reactrouter.com/web/api/NavLink
+* https://v5.reactrouter.com/web/api/MemoryRouter
+* https://v5.reactrouter.com/web/api/Redirect
+* https://v5.reactrouter.com/web/api/Route
+* https://v5.reactrouter.com/web/api/StaticRouter
+* https://v5.reactrouter.com/web/api/Switch
