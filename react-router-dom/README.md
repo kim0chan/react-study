@@ -71,7 +71,17 @@ ReactDOM.render(<BrowserRouter><App/></BrowserRouter>, document.getElementById('
 `Link`와는 달리 `class="active"`라는 속성이 생기고 이를 통해 사용자가 현재 어떤 페이지에 위치하고 있는지 직관적으로 알 수 있도록 한다.
 
 ## Nested Routing
-
+배열을 하나 만들어서 자동으로 리스트가 만들어지고 그에 따라 자동으로 라우터가 만들어지도록 코드를 수정해보자.  
+`Index.js` > `contents`라는 이름의 배열을 전역에 선언했는데, 실제로는 Ajax로 데이터를 가져오게 된다.  
+반복적인 코드를 개선하기 위해 `Topic`이라는 컴포넌트를 추가했고, `Topic`의 하위 메뉴를 클릭하면 URL이 변경되는데, 이 때 `Topic` 컴포넌트에 `id` 값을 전달해서 `id`에 해당하는 데이터를 출력해야 한다.  
+그러기 위해선 `Topic` 컴포넌트 안에서 주소에 있는 숫자 값(`topic_id`)을 알아내야 하는데 이 때 **`useParams`** 라는 hook이 사용된다(임포트하여 사용).  
+```js
+var params = useParams();
+console.log(params);
+```
+콘솔에 찍어보면 `useParams`의 리턴 값이 `topic_id`임을 알 수 있다.  
+`Route`의 `path` 속성에 지정한 것처럼 `:topics+id` 기호를 갖다 놓으면 자리에 들어오는 값이 컴포넌트로 전달되고, 이 값을 사용하기 위해서는 `useParams`를 써서 불러와야 한다.  
+(문자열로 불러와져서 `Number()`로 형변환 해주어야 한다.)
 ___
 ## 문서
 [**Server Rendering**](https://v5.reactrouter.com/web/guides/server-rendering)  
