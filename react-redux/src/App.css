@@ -1,0 +1,9 @@
+body {
+  background-color: darkslategray;
+  color: white
+}
+
+div {
+  border: 5px solid salmon;
+  padding: 10px;
+}
