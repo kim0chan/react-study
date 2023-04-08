@@ -9,7 +9,7 @@ class App extends Component {
     return (<div className="App">
     <h1>Root</h1>
     <AddNumberRoot></AddNumberRoot>
-    <DisplayNumberRoot number={this.state.number}></DisplayNumberRoot>
+    <DisplayNumberRoot></DisplayNumberRoot>
   </div>);
   }
 }
