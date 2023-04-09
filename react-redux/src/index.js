@@ -6,11 +6,21 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './store';
 
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+root.render(
+  <Provider store={store}>
+  <App />
+  </Provider>
+);
+
+/*  '23. 4. 9. Why isn't this working?
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+  <App />
   </Provider>
-, document.getElementById('root'));
+, document.getElementById('root));
+*/
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
